@@ -3,7 +3,9 @@
 </script>
 
 <template>
-  <main>
-  <p>test</p>
-  </main>
+
 </template>
+
+<style scoped>
+
+</style>
