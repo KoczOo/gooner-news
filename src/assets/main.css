@@ -8,7 +8,7 @@ body {
 :root {
     --dark: #524948;
     --blue: #7CB4B8;
-    --grape: #57467B;;
+    --red: #f30606;;
     --marine: #70F8BA;
     --lime: #CAFE48;
     --light: #f8f9fa;
@@ -48,7 +48,7 @@ a {
 ==================================*/
 header {
     background: #212529;
-    border-bottom: 3px solid #611be1;
+    border-bottom: 3px solid #f30606;
     color: white;
     position: fixed;
     width: 100%;
@@ -90,7 +90,7 @@ header ul li a {
 
 header ul li a:hover {
     text-decoration: none !important;
-    color: var(--grape);
+    color: var(--red);
 }
 
 header ul li span {
@@ -99,7 +99,7 @@ header ul li span {
 }
 
 header ul li span:hover {
-    color: var(--grape);
+    color: var(--red);
 }
 
 footer {
@@ -213,18 +213,18 @@ footer .logo {
     cursor: pointer;
     font-weight: 100;
     font-size: 16px;
-    color: var(--grape);
+    color: var(--red);
 }
 
 .signin_container button {
     width: 100%;
-    background: var(--grape);
+    background: var(--red);
     color: #fff;
 }
 
 .signin_container button:hover {
-    color: var(--grape);
-    border: 1px solid var(--grape);
+    color: var(--red);
+    border: 1px solid var(--red);
     background: none;
 }
 
@@ -304,7 +304,7 @@ footer .logo {
 }
 
 .article_page .game_tag {
-    background: var(--grape);
+    background: var(--red);
     display: inline-block;
     font-size: 21px;
     padding: 5px 10px;
@@ -314,7 +314,7 @@ footer .logo {
 
 .article_page .article_rating {
     padding: 10px;
-    background: var(--grape);
+    background: var(--red);
     display: inline-block;
     font-size: 23px;
     color: white;
@@ -361,7 +361,7 @@ footer .logo {
 }
 
 .sidebar .nav-link.router-link-exact-active {
-    color: #611be1;
+    color: #f30606;
 }
 
 
@@ -466,7 +466,7 @@ footer .logo {
 }
 
 .awesome_editor .btn_container span {
-    background: var(--grape);
+    background: var(--red);
     color: white;
     display: inline-block;
     padding: 5px;
