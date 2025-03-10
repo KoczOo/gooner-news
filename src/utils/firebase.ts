@@ -1,8 +1,9 @@
 import {initializeApp} from 'firebase/app'
-import {getFirestore} from 'firebase/firestore'
+import {getFirestore, doc} from 'firebase/firestore'
 import {getAuth} from 'firebase/auth'
-import {loadEnv} from "vite";
 
+
+console.log(import.meta.env)
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_API_KEY,
@@ -14,9 +15,9 @@ const firebaseConfig = {
     measurementId: import.meta.env.VITE_MEASUREMENT_ID,
 };
 
-initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig);
 
-const DB = getFirestore();
-const AUTH = getAuth();
+const DB = getFirestore(firebaseApp);
+const AUTH = getAuth(firebaseApp);
 
-export {DB, AUTH}
+export {DB, AUTH, doc}

@@ -29,5 +29,3 @@ coverage
 extensions.json
 
 *.tsbuildinfo
-
-env.d.ts

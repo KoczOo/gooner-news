@@ -3,6 +3,11 @@ import * as yup from 'yup';
 import {ref} from "vue";
 import {Field, Form} from "vee-validate";
 
+/// AUTH STORE
+import {userUserStore} from "@/stores/user";
+
+const userStore = userUserStore();
+
 const type = ref(false);
 
 const formSchema = yup.object().shape({
@@ -15,13 +20,27 @@ const formSchema = yup.object().shape({
 
 function onSubmit(values: any, {resetForm}: { resetForm: () => void }) {
   console.log(values);
+  //userStore.registerUser(values);
   resetForm();
+  if (type.value) {
+    userStore.registerUser(values);
+  } else {
+
+  }
 }
 
 </script>
 
 <template>
   <div class="signin_container">
+
+    <div v-show="userStore.loading" class="text-center">
+      <v-progress-circular
+          color="warning"
+          indeterminate
+      />
+    </div>
+
     <Form :validation-schema="formSchema" @submit="onSubmit">
       <h1 v-text="!type ? 'Zaloguj' : 'Zarejestruj'"></h1>
 
