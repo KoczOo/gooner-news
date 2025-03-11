@@ -32,7 +32,11 @@ export const useArticleStore = defineStore('article', {
         adminArticles: [] as Article[],
         adminLastVisible: null as any
     }),
-    getters: {},
+    getters: {
+        getFeaturesSlides(state) {
+            return state.homeArticles.slice(0, 2);
+        }
+    },
     actions: {
         async getArticleById(id: string) {
             try {
