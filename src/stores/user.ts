@@ -7,6 +7,7 @@ import {getDoc, setDoc} from 'firebase/firestore';
 import router from "@/router";
 
 
+
 const DEFAULT_USER: User = {
     uid: null,
     email: null,
@@ -118,5 +119,9 @@ export const userUserStore = defineStore('user', {
             await router.push({name: 'home'});
         }
     },
-    getters: {}
+    getters: {
+        getUserData(state) {
+            return state.user;
+        }
+    }
 })

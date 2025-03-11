@@ -11,9 +11,9 @@ const ArticleSchema = yup.object().shape({
         postText: yup.string()
             .required('Tekst jest wymagany')
             .min(20, 'Minimum 100 znaków'),
-        /*editor: yup.string()
+        editor: yup.string()
             .required('Tekst jest wymagany')
-            .min(50, 'Minimum 50 znaków')*/
+            .min(50, 'Minimum 50 znaków'),
         postRating: yup.string()
             .required('Ocena jest wymagana')
             .notOneOf(['Wybierz ocenę'], 'Musisz wybrać ocenę'),
