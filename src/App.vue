@@ -8,7 +8,7 @@ const {loading} = firstLoad();
 </script>
 
 <template>
-  <div class="text-center m-5" v-if="loading">
+  <div v-if="loading" class="text-center m-5">
     <v-progress-circular
         color="warning"
         indeterminate
@@ -17,7 +17,6 @@ const {loading} = firstLoad();
   <div v-else>
     <Header/>
     <router-view/>
-
   </div>
 </template>
 
