@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import {Field, Form} from "vee-validate"
+import ArticleSchema from "./schema.ts"
 
 const ratingArray = [0, 1, 2, 3, 4, 5];
 
@@ -12,7 +13,7 @@ function onSubmit(values: any, {resetForm}: { resetForm: () => void }) {
   <h1>Dodaj artykuł</h1>
   <hr/>
 
-  <Form class="mb-5" @submit="onSubmit">
+  <Form class="mb-5" @submit="onSubmit" :validation-schema="ArticleSchema">
 
     <div class="mb-4">
       <Field
@@ -51,7 +52,7 @@ function onSubmit(values: any, {resetForm}: { resetForm: () => void }) {
     <div class="mb-4">
       <Field
           v-slot="{ field, errors, errorMessage }"
-          name="postSection">
+          name="postText">
         <textarea
             :class="{'is-invalid': errors.length != 0}"
             class="form-control"
