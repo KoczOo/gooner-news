@@ -25,7 +25,7 @@ function onSubmit(values: any, {resetForm}: { resetForm: () => void }) {
   if (type.value) {
     userStore.registerUser(values);
   } else {
-
+    userStore.signIn(values);
   }
 }
 
