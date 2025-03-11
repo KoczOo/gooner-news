@@ -15,10 +15,11 @@ export const userUserStore = defineStore('user', {
         error: null as string | null
     }),
     actions: {
-        setUser(user: User) {
+        setUser(user: User | null) {
             this.user = {...this.user, ...user};
             this.auth = true;
         },
+
         async getUserProfile(uuid: string) {
             try {
                 this.loading = true;
@@ -34,6 +35,7 @@ export const userUserStore = defineStore('user', {
                 this.loading = false;
             }
         },
+
         async signIn(formData: any) {
             try {
                 this.loading = true;
@@ -56,6 +58,7 @@ export const userUserStore = defineStore('user', {
                 this.loading = false;
             }
         },
+
         async registerUser(formData: any) {
             try {
                 this.loading = true;
@@ -86,6 +89,17 @@ export const userUserStore = defineStore('user', {
                 throw new Error((error as Error).message);
             } finally {
                 this.loading = false;
+            }
+        },
+
+        async autoSignIn(uuid: string) {
+            try {
+                const userData = await this.getUserProfile(uuid);
+                /// UPDATE LOCAL STATE
+                this.setUser(userData as User);
+                return true;
+            } catch (error) {
+                console.error(error);
             }
         }
     },
