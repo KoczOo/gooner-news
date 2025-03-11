@@ -9,6 +9,7 @@ import AdminArticles from "@/components/user/dashboard/admin/articles.vue";
 import AddArticle from "@/components/user/dashboard/admin/add.vue";
 import EditArticle from "@/components/user/dashboard/admin/edit.vue";
 import NotFound from "@/components/404.vue"
+import Article from "@/components/articles/articles.vue"
 
 
 const router = createRouter({
@@ -19,6 +20,10 @@ const router = createRouter({
             name: 'home',
             component: Home,
         },
+        {
+            path:'/article/:id',
+            component: Article,
+            name:'article'},
         {
             path: '/signin',
             name: 'signin',

@@ -33,6 +33,9 @@ export const useArticleStore = defineStore('article', {
         adminLastVisible: null as any
     }),
     getters: {
+        getHomeArticles(state) {
+          return state.homeArticles;
+        },
         getFeaturesSlides(state) {
             return state.homeArticles.slice(0, 2);
         }
