@@ -50,8 +50,8 @@ export const userUserStore = defineStore('user', {
                 await router.push({name: 'dashboard'})
 
             } catch (error) {
-                this.error = (error as Error).message;
-                return false;
+                console.log(error);
+                throw new Error((error as Error).message);
             } finally {
                 this.loading = false;
             }
@@ -83,9 +83,7 @@ export const userUserStore = defineStore('user', {
                 this.setUser(newUser);
 
             } catch (error) {
-                this.error = (error as Error).message || "An unknown error occurred";
-                return false;
-
+                throw new Error((error as Error).message);
             } finally {
                 this.loading = false;
             }

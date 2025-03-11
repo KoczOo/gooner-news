@@ -3,9 +3,13 @@ import * as yup from 'yup';
 import {ref} from "vue";
 import {Field, Form} from "vee-validate";
 
+/// TOASTS
+import {useToast} from "vue-toast-notification";
+const $toast =  useToast();
+
 /// AUTH STORE
 import {userUserStore} from "@/stores/user";
-
+import errorCoders from "@/utils/error-codes.ts";
 const userStore = userUserStore();
 
 const type = ref(false);
@@ -28,6 +32,18 @@ function onSubmit(values: any, {resetForm}: { resetForm: () => void }) {
     userStore.signIn(values);
   }
 }
+
+userStore.$onAction(({ name, after, onError }) => {
+  if (name === 'registerUser' || name === 'signIn') {
+    after(() => {
+      $toast.success('Welcome Gooner!')
+    });
+    onError((error) => {
+      $toast.error(errorCoders((error as Error).message));
+    });
+  }
+});
+
 
 </script>
 
