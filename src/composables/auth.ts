@@ -15,3 +15,8 @@ export const firstLoad = () => {
     })
     return {loading};
 }
+
+export const isAuth = () => AUTH.currentUser ? true : '/signin';
+
+export const isLoggedIn = () => AUTH.currentUser ? '/' : true;
+

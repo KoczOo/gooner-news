@@ -1,4 +1,5 @@
 import {createRouter, createWebHistory} from 'vue-router'
+import {isAuth, isLoggedIn} from '@/composables/auth.ts'
 import HomeView from "@/views/HomeView.vue";
 import SignIn from "@/components/user/signin.vue";
 import Dashboard from "@/components/user/dashboard/index.vue"
@@ -20,10 +21,11 @@ const router = createRouter({
         {
             path: '/signin',
             name: 'signin',
-            component: SignIn
+            component: SignIn,
+            beforeEnter: isLoggedIn
         },
         {
-            path: '/user/dashboard', name: 'dashboard', component: Dashboard, children: [
+            path: '/user/dashboard', name: 'dashboard', component: Dashboard, beforeEnter: isAuth, children: [
                 {
                     path: '', component: DashboardMain, 'name': 'dashboard_main',
                 },

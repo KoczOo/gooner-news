@@ -23,7 +23,7 @@ const userStore = userUserStore();
           </li>
 
           <li v-if="userStore.auth">
-            <span>Panel</span>
+            <router-link :to="{name: 'dashboard'}">Panel</router-link>
           </li>
 
           <li v-if="userStore.auth">

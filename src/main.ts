@@ -1,53 +1,41 @@
-import './assets/main.css'
+import './assets/main.css';
 
-import {createApp} from 'vue'
-import {createPinia} from 'pinia'
-import { userUserStore } from '@/stores/user.ts'
+import {createApp, type App} from 'vue';
+import {createPinia} from 'pinia';
 
-//  TOASTS
-import ToastPlugin from 'vue-toast-notification'
-import 'vue-toast-notification/dist/theme-bootstrap.css'
+import ApComponent from '@/App.vue';
+import router from './router';
 
-// Vuetify
-import 'vuetify/styles'
-import '@mdi/font/css/materialdesignicons.css'
-import { createVuetify } from 'vuetify'
-import * as components from 'vuetify/components'
-import * as directives from 'vuetify/directives'
+/// TOASTS
+import ToastPlugin from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-bootstrap.css';
 
-//  FIREBASE
-import {AUTH} from "@/utils/firebase.ts";
-import {onAuthStateChanged} from 'firebase/auth'
+/// VUETIFY
+import 'vuetify/styles';
+import '@mdi/font/css/materialdesignicons.css';
+import {createVuetify} from 'vuetify';
+import * as components from 'vuetify/components';
+import * as directives from 'vuetify/directives';
 
-import App from './App.vue'
-import router from './router'
+/// FIREBASE
+import {AUTH} from '@/utils/firebase';
+import {onAuthStateChanged} from 'firebase/auth';
 
 const vuetify = createVuetify({
     components,
     directives,
-})
-
-const app = createApp(App);
-app.use(createPinia());
-app.use(router);
-app.use(vuetify);
-app.use(ToastPlugin);
-
-
-const userStore = userUserStore();
-onAuthStateChanged(AUTH, (user) => {
-    if (user) {
-        userStore.setUser({
-            uid: user.uid,
-            email: user.email ?? undefined,
-            isAdmin: false,
-        });
-    } else {
-        userStore.setUser(null);
-    }
 });
 
-app.mount('#app');
+let app: App<Element> | undefined;
 
+onAuthStateChanged(AUTH, () => {
+    if (!app) {
+        app = createApp(ApComponent);
+        app.use(createPinia());
+        app.use(router);
+        app.use(vuetify);
+        app.use(ToastPlugin);
 
-
+        app.mount('#app');
+    }
+});
