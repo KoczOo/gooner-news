@@ -8,6 +8,7 @@ import UserProfile from "@/components/user/dashboard/pages/user_profile.vue";
 import AdminArticles from "@/components/user/dashboard/admin/articles.vue";
 import AddArticle from "@/components/user/dashboard/admin/add.vue";
 import EditArticle from "@/components/user/dashboard/admin/edit.vue";
+import NotFound from "@/components/404.vue"
 
 
 const router = createRouter({
@@ -39,9 +40,12 @@ const router = createRouter({
                     path: 'articles/add', component: AddArticle, 'name': 'admin_add_article',
                 },
                 {
-                    path: 'articles/add/:id', component: EditArticle, 'name': 'admin_edit_article',
+                    path: 'articles/edit/:id', component: EditArticle, 'name': 'admin_edit_article',
                 }
             ]
+        },
+        {
+            path: '/:notFound(.*)*', name: '404', component: NotFound
         }
     ],
 })
