@@ -2,7 +2,7 @@ import {defineStore} from "pinia";
 import type User from "@/dto/model/User";
 //// FIREBASE
 import {AUTH, DB, doc} from "@/utils/firebase.ts";
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth'
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from 'firebase/auth'
 import {getDoc, setDoc} from 'firebase/firestore';
 import router from "@/router";
 
@@ -101,6 +101,13 @@ export const userUserStore = defineStore('user', {
             } catch (error) {
                 console.error(error);
             }
+        },
+
+        async signOut() {
+            await signOut(AUTH);
+            this.setUser(null);
+            this.auth = false;
+            await router.push({ name: 'home' });
         }
     },
     getters: {}
